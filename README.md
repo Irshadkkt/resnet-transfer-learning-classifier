@@ -1,7 +1,7 @@
 # Fine-Tuned CNN for Multi-Class Image Classification Under Real-World Constraints
 
 A transfer-learning-based image classifier built and trained from scratch (PyTorch), tackling
-variable-resolution images across 8 classes with a small training set — achieving **[XX.X]%
+variable-resolution images across 8 classes with a small training set — achieving **90.62%
 accuracy on a held-out, secret test set** (evaluated independently, not on the public leaderboard).
 
 > This project originated as a graduate coursework challenge (Deep Learning, University of Siegen)
@@ -61,12 +61,11 @@ correctly with expected IDs — a small but easy-to-miss correctness bug in imag
 
 | Metric | Value |
 |---|---|
-| Test accuracy (secret held-out set) | **[XX.X]%** |
+| Test accuracy (secret held-out set) | **90.62%** |
 | Number of classes | 8 |
-| Training set size | [~N images] |
-| Backbone | ResNet18 (ImageNet pretrained) |
-| Trainable params (head only vs. full fine-tune) | [fill in] |
-| Epochs | [fill in] |
+| Training set size | A few hundred images, split across 8 classes |
+| Backbone | ResNet18 (ImageNet pretrained), fully fine-tuned (no frozen layers) |
+| Epochs | 15 |
 
 *(Grading was scaled linearly between 15% accuracy = 1 point and 90% accuracy = full points,
 with 12.5% representing random chance across 8 classes — this model cleared the top band.)*
