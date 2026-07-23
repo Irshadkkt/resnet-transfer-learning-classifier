@@ -1,0 +1,7 @@
+# Private course data — do not commit
+data/
+model.pkl
+submission.csv
+__pycache__/
+*.pyc
+.DS_Store
