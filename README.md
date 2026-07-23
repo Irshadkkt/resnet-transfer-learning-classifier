@@ -116,3 +116,24 @@ data/val/*.jpg   # unlabeled, for inference
 ---
 
 **Tech stack:** Python, PyTorch, torchvision, PIL
+
+## Try it yourself (local demo)
+
+A small Gradio app (`app.py`) is included for interactive testing:
+
+```bash
+pip install gradio torch torchvision pillow
+python app.py
+```
+
+Then open the local URL it prints and upload any image — the model outputs a probability
+distribution across all 8 classes. Requires `model.pkl` (your own trained weights) in the same
+folder; weights are not included in this repo since they were trained on private course data.
+
+**Example run:**
+
+![Demo screenshot](results/demo_screenshot.png)
+
+*Uploaded image correctly classified as `santa` with 97% confidence; the remaining probability
+mass falls on visually related classes (`reindeer`, `christmas_presents`) rather than unrelated
+ones — a good sign the model's confidence is well-calibrated, not just a random high number.*
