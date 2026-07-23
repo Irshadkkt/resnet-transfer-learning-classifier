@@ -57,6 +57,19 @@ The test-time loader enforces strict numeric ordering of unlabeled images (`0.pn
 rather than lexicographic, which would misorder `10.png` before `2.png`) so that predictions align
 correctly with expected IDs — a small but easy-to-miss correctness bug in image pipelines.
 
+## Model interpretability (Grad-CAM)
+
+To verify the model is learning meaningful visual features — not just shortcuts in the
+data — I generated **Grad-CAM** heatmaps on the last convolutional block of the fine-tuned
+ResNet18, run on unseen validation images:
+
+![Grad-CAM examples](results/gradcam_grid.jpg)
+
+The activations consistently localize on the actual subject of each image (the santa figure,
+the snowman's body, the penguin) rather than background or edge artifacts — a good sign the
+model generalizes on genuine visual features rather than spurious correlations, which matters
+more than the accuracy number alone when judging whether a model will hold up on truly new data.
+
 ## Results
 
 | Metric | Value |
@@ -74,7 +87,6 @@ with 12.5% representing random chance across 8 classes — this model cleared th
 
 - Compare fine-tuned ResNet18 against a frozen-backbone baseline (linear probe only) to quantify
   how much fine-tuning contributed vs. the pretrained features alone.
-- Add Grad-CAM visualizations to inspect which regions the model attends to per class.
 - Try a slightly deeper backbone (ResNet34/50) or EfficientNet to see if accuracy improves without
   overfitting, given the small dataset size.
 
